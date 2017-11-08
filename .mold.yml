@@ -61,12 +61,6 @@ artifacts:
     githubrelease:
         project_name: test
         builds:
-            - binary: test-goreleaser
-              goarch:
-              - amd64
-              goos:
-              - windows
-              - darwin
-              - linux
+            - dir: dist
 
 
