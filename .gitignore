@@ -1,2 +1,5 @@
 .secret
 dist/
+main
+vendor
+.mold.env
