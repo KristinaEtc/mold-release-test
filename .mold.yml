@@ -2,8 +2,14 @@ build:
     - image: "golang:1.8.1"
       workdir: "/go/src/experimental"
       cache: false
+      volumes:
+        - /home/kovalevskayakv/work/go/src/github.com/KristinaEtc/mold-release-test/etc/.mold.env:/go/src/experimental/mold.env
       commands:
-        - printf "machine github.com\n\tlogin $GITHUB_TOKEN\n" > /root/.netrc
-        - cd /go/src/experimental
+        - printf "machine github.com\n\tlogin $GITHUB_TOKENs\n" > /root/.netrc
+        - cat /go/src/experimental/mold.env
         - make dep
         - make all
+artifacts:
+  publish:
+  images:
+    - name: rt
