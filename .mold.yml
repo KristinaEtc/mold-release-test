@@ -2,11 +2,9 @@ build:
     - image: "golang:1.8.1"
       workdir: "/go/src/experimental"
       cache: false
-      volumes:
-        - /home/kovalevskayakv/work/go/src/github.com/KristinaEtc/mold-release-test/etc/.mold.env:/go/src/experimental/mold.env
+      file: /home/kovalevskayakv/work/go/src/github.com/KristinaEtc/mold-release-test/etc/.mold.env
       commands:
-        - printf "machine github.com\n\tlogin $GITHUB_TOKENs\n" > /root/.netrc
-        - cat /go/src/experimental/mold.env
+        - printf "machine github.com\n\tlogin $GITHUB_TOKEN\n" > /root/.netrc
         - make dep
         - make all
 artifacts:
